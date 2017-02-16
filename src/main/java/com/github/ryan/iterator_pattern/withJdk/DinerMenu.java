@@ -1,12 +1,14 @@
-package com.github.ryan.iterator_pattern.withoutJdk;
+package com.github.ryan.iterator_pattern.withJdk;
+
+import java.util.Iterator;
 
 /**
  * @author Ryan-hou
  * @description:
  * @className: DinerMenu
- * @date February 13,2017
+ * @date February 16,2017
  */
-public class DinerMenu {
+public class DinerMenu implements Menu {
     static final int MAX_ITEMS = 6;
     int numberOfItems = 0;
     MenuItem[] menuItems;
@@ -29,6 +31,8 @@ public class DinerMenu {
         addItem("Hotdog", "Just a hotdog", false, 1.2);
     }
 
+
+    @Override
     public Iterator createIterator() {
         return new DinerMenuIterator(menuItems);
     }

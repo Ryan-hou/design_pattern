@@ -14,6 +14,8 @@ public class MenuTestDrive {
                 new Menu("DINNER MENU", "Lunch");
         MenuComponent dessertMenu =
                 new Menu("DESSERT MENU", "Dessert of course!");
+        MenuComponent anotherDissertMenu =
+                new Menu("ANOTHER DESSERT MENU", "ANOTHER DESSERT MENU!");
 
         MenuComponent allMenus = new Menu("ALL MENUS", "All menus combined");
         allMenus.add(pancakeHouseMenu);
@@ -40,6 +42,13 @@ public class MenuTestDrive {
                 true,
                 3.45
         ));
+        dessertMenu.add(anotherDissertMenu);
+        anotherDissertMenu.add(new MenuItem(
+                "Another dissert",
+                "Will be repeated three times",
+                true,
+                1.22
+        ));
 
         pancakeHouseMenu.add(new MenuItem(
                 "Pancake's food",
@@ -49,7 +58,10 @@ public class MenuTestDrive {
         ));
 
         Waitress waitress = new Waitress(allMenus);
+        // 在组件内部通过递归来打印该组件的所有元素
         waitress.printMenu();
-
+        // 在组件外部通过组合迭代器,迭代组件的所有元素
+        System.out.println("\n\n\n---------------- Use composite iterator ------------");
+        waitress.printVegetarianMenu();
     }
 }

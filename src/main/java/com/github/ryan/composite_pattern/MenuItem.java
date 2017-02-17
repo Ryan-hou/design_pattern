@@ -1,5 +1,7 @@
 package com.github.ryan.composite_pattern;
 
+import java.util.Iterator;
+
 /**
  * @author Ryan-hou
  * @description: 菜单项类,在组合类图里的叶类,她实现组合元素内的行为
@@ -46,5 +48,10 @@ public class MenuItem extends MenuComponent {
         }
         System.out.print(", " + getPrice());
         System.out.println(" --- " + getDescription());
+    }
+
+    @Override
+    public Iterator createIterator() {
+        return new NullIterator();
     }
 }

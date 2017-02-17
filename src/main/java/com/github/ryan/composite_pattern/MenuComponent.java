@@ -1,5 +1,7 @@
 package com.github.ryan.composite_pattern;
 
+import java.util.Iterator;
+
 /**
  * @author Ryan-hou
  * @description:
@@ -42,6 +44,11 @@ public abstract class MenuComponent {
 
     // print() 是一个操作方法,这个方法同时被菜单和菜单项实现,我们这里还是提供了默认实现
     public void print() {
+        throw new UnsupportedOperationException();
+    }
+
+    // 实现组合迭代器: 可以遍历整个组合
+    public Iterator createIterator() {
         throw new UnsupportedOperationException();
     }
 }

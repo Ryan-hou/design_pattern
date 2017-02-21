@@ -1,18 +1,18 @@
 package com.github.ryan.command_pattern;
 
-import java.util.Arrays;
-
 /**
  * @author Ryan-hou
  * @description:
- * @className: RemoteControl
+ * @className: RemoteControlWithUndo
  * @date February 21,2017
  */
-public class RemoteControl {
+public class RemoteControlWithUndo {
     Command[] onCommands;
     Command[] offCommands;
+    // 纪录前一个命令
+    Command undoCommand;
 
-    public RemoteControl() {
+    public RemoteControlWithUndo() {
         onCommands = new Command[7];
         offCommands = new Command[7];
 
@@ -22,6 +22,7 @@ public class RemoteControl {
             onCommands[i] = noCommand;
             offCommands[i] = noCommand;
         }
+        undoCommand = noCommand;
     }
 
     public void setCommand(int slot, Command onCommand, Command offCommand) {
@@ -31,10 +32,16 @@ public class RemoteControl {
 
     public void onButtonWasPushed(int slot) {
         onCommands[slot].execute();
+        undoCommand = onCommands[slot];
     }
 
     public void offButtonWasPushed(int slot) {
         offCommands[slot].execute();
+        undoCommand = offCommands[slot];
+    }
+
+    public void undoButtonWasPushed() {
+        undoCommand.undo();
     }
 
     @Override
@@ -45,6 +52,7 @@ public class RemoteControl {
             sb.append("[slot " + i + "] " + onCommands[i].getClass().getName()
             + "  " + offCommands[i].getClass().getName() + "\n");
         }
+        sb.append("[undo] " + undoCommand.getClass().getName() + "\n");
         return sb.toString();
     }
 }

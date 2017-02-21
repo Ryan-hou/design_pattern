@@ -45,23 +45,46 @@ public class RemoteLoader {
                 new StereoOffCommand(stereo);
 
         // 构造调用者,设置命令对象
-        RemoteControl remoteControl = new RemoteControl();
-        remoteControl.setCommand(0, livingRoomLightOn, livingRoomLightOff);
-        remoteControl.setCommand(1, kitchenLightOn, kitchenLightOff);
-        remoteControl.setCommand(2, ceilingFanOnCommand, ceilingFanOffCommand);
-        remoteControl.setCommand(3, stereoOnWithCDCommand, stereoOffCommand);
+        RemoteControlWithUndo remoteControlWithUndo = new RemoteControlWithUndo();
 
-        System.out.println(remoteControl);
+        Command[] partyOn = {livingRoomLightOn, kitchenLightOn, stereoOnWithCDCommand};
+        Command[] partyOff = {livingRoomLightOff, kitchenLightOff, stereoOffCommand};
+
+        MacroCommand partyOnMacro = new MacroCommand(partyOn);
+        MacroCommand partyOffMacro = new MacroCommand(partyOff);
+
+        remoteControlWithUndo.setCommand(0, partyOnMacro, partyOffMacro);
+        System.out.println(remoteControlWithUndo);
+        System.out.println("--------- Pushing Macro On ---------");
+        remoteControlWithUndo.onButtonWasPushed(0);
+        System.out.println("--------- Pushing Macro Off --------");
+        remoteControlWithUndo.offButtonWasPushed(0);
+
+        /*remoteControlWithUndo.setCommand(0, livingRoomLightOn, livingRoomLightOff);
+        remoteControlWithUndo.setCommand(1, kitchenLightOn, kitchenLightOff);
+        remoteControlWithUndo.setCommand(2, ceilingFanOnCommand, ceilingFanOffCommand);
+        remoteControlWithUndo.setCommand(3, stereoOnWithCDCommand, stereoOffCommand);
+
+        System.out.println(remoteControlWithUndo);
 
         // 调用者通过命令对象调用相应的方法
-        remoteControl.onButtonWasPushed(0);
-        remoteControl.offButtonWasPushed(0);
-        remoteControl.onButtonWasPushed(1);
-        remoteControl.offButtonWasPushed(1);
-        remoteControl.onButtonWasPushed(2);
-        remoteControl.offButtonWasPushed(2);
-        remoteControl.onButtonWasPushed(3);
-        remoteControl.offButtonWasPushed(3);
+        remoteControlWithUndo.onButtonWasPushed(0);
+        remoteControlWithUndo.offButtonWasPushed(0);
+        System.out.println(remoteControlWithUndo);
+        // 撤销上一步操作,也就是开灯
+        remoteControlWithUndo.undoButtonWasPushed();
+        remoteControlWithUndo.offButtonWasPushed(0);
+        remoteControlWithUndo.onButtonWasPushed(0);
+        System.out.println(remoteControlWithUndo);
+        // 关灯
+        remoteControlWithUndo.undoButtonWasPushed();*/
+
+        /*remoteControlWithUndo.onButtonWasPushed(1);
+        remoteControlWithUndo.offButtonWasPushed(1);
+        remoteControlWithUndo.onButtonWasPushed(2);
+        remoteControlWithUndo.offButtonWasPushed(2);
+        remoteControlWithUndo.onButtonWasPushed(3);
+        remoteControlWithUndo.offButtonWasPushed(3);*/
 
     }
 }

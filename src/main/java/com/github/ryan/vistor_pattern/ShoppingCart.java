@@ -17,12 +17,13 @@ public class ShoppingCart {
     private List<Visitable> items;
 
     public double calculatePostage() {
-        // create a visitor
-        PostageVisitor visitor = new PostageVisitor();
-        // iterate through all items
         if (Objects.isNull(items)) {
             return 0.0;
         }
+
+        // create a visitor
+        PostageVisitor visitor = new PostageVisitor();
+        // iterate through all items
         for (Visitable visitable : items) {
             visitable.accept(visitor);
         }

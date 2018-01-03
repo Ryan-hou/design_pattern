@@ -20,6 +20,7 @@ public class SingletonWithDoubleCheck {
             synchronized (SingletonWithDoubleCheck.class) {
                 if (uniqueInstance == null) {
                     // 再次检查是否存在实例,不存在时才创建实例
+                    // volatile 保证了new实例指令不被重排序
                     uniqueInstance = new SingletonWithDoubleCheck();
                 }
             }

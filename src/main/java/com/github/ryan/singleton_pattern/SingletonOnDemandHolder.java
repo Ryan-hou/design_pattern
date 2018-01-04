@@ -1,7 +1,7 @@
 package com.github.ryan.singleton_pattern;
 
 /**
- * @author yanlin.hou@ucarinc.com
+ * @author ryan.houyl@gmail.com
  * @description:
  * On demand holder idiom: which is thread-safe and a lot easier to understand
  * @className: SingletonOnDemandHolder

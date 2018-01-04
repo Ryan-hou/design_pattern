@@ -1,7 +1,7 @@
 package com.github.ryan.vistor_pattern;
 
 /**
- * @author yanlin.hou@ucarinc.com
+ * @author ryan.houyl@gmail.com
  * @description:
  * @className: CD
  * @date September 23,2017

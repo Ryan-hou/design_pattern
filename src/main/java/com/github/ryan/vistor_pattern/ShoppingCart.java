@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @author yanlin.hou@ucarinc.com
+ * @author ryan.houyl@gmail.com
  * @description:
  * @className: ShoppingCart
  * @date September 23,2017

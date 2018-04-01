@@ -10,8 +10,10 @@ package com.github.ryan.singleton_pattern;
 public class SingletonOnDemandHolder {
 
     private static class LazySingletonHolder {
-        public static SingletonOnDemandHolder singleton = new SingletonOnDemandHolder();
+        static SingletonOnDemandHolder singleton = new SingletonOnDemandHolder();
     }
+
+    private SingletonOnDemandHolder() {}
 
     /**
      * This code is guaranteed to be correct because of the initialization guarantees

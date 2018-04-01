@@ -18,7 +18,7 @@ public class SingletonTestDrive extends Thread {
     public void run() {
 //        super.run();
         System.out.println(threadName + " is running....");
-        System.out.println("Singleton's hashCode is: " + SingletonWithDoubleCheck.getInstance().hashCode());
+        System.out.println("Singleton's hashCode is: " + SingletonUseEnum.SINGLETON.hashCode());
     }
 
     public static void main(String[] args) {
